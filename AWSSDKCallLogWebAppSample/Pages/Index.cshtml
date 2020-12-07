@@ -1,0 +1,81 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h3>Logging parameters from AWSOptions object</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><b>AWSOptions.DefaultClientConfig.LogReponse</b></td>
+                <td>@ViewData["AWSOptions.DefaultClientConfig.LogReponse"]</td>
+            </tr>
+            <tr>
+                <td><b>AWSOptions.DefaultClientConfig.LogMetrics</b></td>
+                <td>@ViewData["AWSOptions.DefaultClientConfig.LogMetrics"]</td>
+            </tr>
+            <tr>
+                <td><b>AWSOptions.DefaultClientConfig.DisableLogging</b></td>
+                <td>@ViewData["AWSOptions.DefaultClientConfig.DisableLogging"]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Logging parameters from AWSConfig non-deprecated property LoggingConfig</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><b>Amazon.AWSConfigs.LoggingConfig.LogMetrics</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.LoggingConfig.LogMetrics"]</td>
+            </tr>
+            <tr>
+                <td><b>Amazon.AWSConfigs.LoggingConfig.LogResponses</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.LoggingConfig.LogResponses"]</td>
+            </tr>
+            <tr>
+                <td><b>Amazon.AWSConfigs.LoggingConfig.LogTo</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.LoggingConfig.LogTo"]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Logging parameters from AWSConfig deprecated properties</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><b>Amazon.AWSConfigs.Logging</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.Logging"]</td>
+            </tr>
+            <tr>
+                <td><b>Amazon.AWSConfigs.LogMetrics</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.LogMetrics"]</td>
+            </tr>
+            <tr>
+                <td><b>Amazon.AWSConfigs.LoggingConfig.LogTo</b></td>
+                <td>@ViewData["Amazon.AWSConfigs.ResponseLogging"]</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    @if (string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <h3>Bucket list</h3>
+        <table>
+            <tbody>
+                @foreach (string bucketName in Model.BucketNameList)
+                {
+                    <tr><td>@bucketName</td></tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2>S3 Error Code</h2>
+        @Model.ErrorMessage
+    }
+</div>
