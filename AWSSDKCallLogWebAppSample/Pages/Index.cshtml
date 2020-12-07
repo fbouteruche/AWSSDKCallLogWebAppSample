@@ -60,6 +60,27 @@
     </table>
 
 
+    <h3>Workaround to enable logging</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td><b>Workaround Amazon.AWSConfigs.LoggingConfig.LogResponses</b></td>
+                <td>@ViewData["Workaround Amazon.AWSConfigs.LoggingConfig.LogResponses"]</td>
+            </tr>
+            <tr>
+                <td><b>Workaround Amazon.AWSConfigs.LoggingConfig.LogTo</b></td>
+                <td>@ViewData["Workaround Amazon.AWSConfigs.LoggingConfig.LogTo"]</td>
+            </tr>
+            <tr>
+                <td><b>Workaround Amazon.AWSConfigs.Logging</b></td>
+                <td>@ViewData["Workaround Amazon.AWSConfigs.Logging"]</td>
+            </tr>
+            <tr>
+                <td><b>Workaround Amazon.AWSConfigs.ResponseLogging</b></td>
+                <td>@ViewData["Workaround Amazon.AWSConfigs.ResponseLogging"]</td>
+            </tr>
+        </tbody>
+    </table>
 
     @if (string.IsNullOrEmpty(Model.ErrorMessage))
     {

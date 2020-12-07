@@ -55,6 +55,15 @@ namespace AWSSDKCallLogWebAppSample.Pages
             ViewData["Amazon.AWSConfigs.LogMetrics"] = Amazon.AWSConfigs.LogMetrics.ToString();
             ViewData["Amazon.AWSConfigs.ResponseLogging"] = Amazon.AWSConfigs.ResponseLogging.ToString();
 
+            //Workaround to force log
+            Amazon.AWSConfigs.LoggingConfig.LogResponses = Amazon.ResponseLoggingOption.Always;
+            Amazon.AWSConfigs.LoggingConfig.LogTo = Amazon.LoggingOptions.SystemDiagnostics;
+            Amazon.AWSConfigs.AddTraceListener("Amazon", new System.Diagnostics.ConsoleTraceListener());
+
+            ViewData["Workaround Amazon.AWSConfigs.LoggingConfig.LogResponses"] = Amazon.AWSConfigs.LoggingConfig.LogResponses.ToString();
+            ViewData["Workaround Amazon.AWSConfigs.LoggingConfig.LogTo"] = Amazon.AWSConfigs.LoggingConfig.LogTo.ToString();
+            ViewData["Workaround Amazon.AWSConfigs.Logging"] = Amazon.AWSConfigs.Logging.ToString();
+            ViewData["Workaround Amazon.AWSConfigs.ResponseLogging"] = Amazon.AWSConfigs.ResponseLogging.ToString();
 
             IAmazonS3 s3Client = options.CreateServiceClient<IAmazonS3>();
             ListBucketsResponse listBucketsReponse = await s3Client.ListBucketsAsync();
